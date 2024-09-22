@@ -1,35 +1,32 @@
 # Development setup scripts and instructions.
 
 ## Ubuntu
-* Run: ``./scripts/install.sh <system_name> <username/email> <db_username> <db_name> [php_version = 8.3]``
+* Run: ``./scripts/install.sh <system_name> <username/email> <db_username> <db_name> [php_version = 8.1]``
   * Packages
     * git
     * curl
     * wget
     * mariadb-server
     * openssl
-    * PHP
+    * PHP, extensions: curl, yaml, dom, xdebug, mysql, mbstring, xml
     * Composer
 * Set xdebug stub in VSCode Preferences: User Settings (JSON).
 
 ### MariaDB
 * Install MariaDB and add local user + database
   * Run the script ``./scripts/mariadb_install.sh <username> <database>``
-* Add a database
-  * Run: ``./scripts/mariadb_create_database.sh <username> <database> [remote_ip = localhost]``
-* Set up user
-  * Run: ``./scripts/mariadb_create_database_user.sh <username> <database_name> [remote_ip = localhost] [password = random]``
+* Add database with user
+  * Run: ``./scripts/mariadb_create_database_with_user.sh <username> <database> [remote_ip = localhost] [password = random]``
   * Remote user
     * Change Configuration: ``/etc/mysql/mariadb.conf.d/50-server.cnf`` and the value ``bind-address=0.0.0.0``
     * Run: ``systemctl restart mariadb.service``
 
 ### SSH key pair
 * Creates pair, adds pair and starts ssh-agent
-  * Run: ``./scripts/ssh_key_pair.sh <ssh_key_name/system_name> [ssh_key_comment = ""]`
+  * Run: ``./scripts/ssh_key_pair.sh <ssh_key_name/system_name> [ssh_key_comment = ""]``
 
 ### PHP and Composer
 * Run: ``./scripts/php.sh <php_version>``
-  * Defaults to PHP version 8.3
 
 ### Apache2
 * Run: ``./scripts/apache2.sh <domain_name> <system_dir>`` and ``./scripts/system_directories.sh <system_dir>``
