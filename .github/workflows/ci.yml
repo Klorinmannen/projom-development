@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  schedule:
+    - cron: "0 4 * * 3" # Every Wednesday at 4:00 UTC
+
+permissions:
+  contents: read # For actions/checkout@v4
+
+jobs:
+  script-test:
+    name: Script tests on ubuntu-latest
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Change permissions
+        run: |
+          chmod +x ./scripts/*
+          chmod +x ./schemas/*
+          chmod +x ./config/*
+
+      - name: Main install script
+        run: ./scripts/install.sh dev user@example.com db_username database_name

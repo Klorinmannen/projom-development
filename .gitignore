@@ -1,0 +1,16 @@
+# Block everything.
+/*
+
+# White-list files.
+!.gitignore
+!README.md
+
+# White-list entire directories.
+!.github/
+!scripts/
+!schemas/
+!config/
+
+# Ignore crap files.
+**/*.*~
+**/*#*
