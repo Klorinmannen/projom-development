@@ -5,7 +5,7 @@
 ### System setup
 The following script installs php8.1, composer, mariadb-server + user and creates a ssh key pair.
 * ``./scripts/install.sh <system_name> <username/email> <db_username> <db_name> [php_version = 8.1]``
-### Packages
+#### Packages
 * git
 * curl
 * wget
