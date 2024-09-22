@@ -43,9 +43,17 @@ bash ./scripts/php.sh $PHP_VERSION
 sleep 1
 
 bash ./scripts/mariadb_install.sh $DB_USERNAME $DB_NAME
+if [ $? -ne 0 ]; then
+	echo "Error: MariaDB installation failed"
+	exit 1
+fi
 
 sleep 1
 
 bash ./scripts/ssh_key_pair.sh $SYSTEM $USER
+if [ $? -ne 0 ]; then
+	echo "Error: SSH key pair generation failed"
+	exit 1
+fi
 
 exit 0
